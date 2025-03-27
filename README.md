@@ -14,39 +14,25 @@ Yatube — это платформа социальных сетей, котор
 
 Клонировать репозиторий и перейти в него в командной строке:
 
-shell
-
 git clone https://github.com/1Tarashka1/api_yatube.git
 
 Cоздать и активировать виртуальное окружение:
 
-shell
-
 python -m venv venv
-
-shell
 
 source venv/Scripts/activate
 
 Установить зависимости из файла requirements.txt:
 
-shell
-
 python -m pip install --upgrade pip
-
-shell
 
 pip install -r requirements.txt
 
 Выполнить миграции из директории yatube_api:
 
-shell
-
 python manage.py migrate
 
 Запустить проект:
-
-shell
 
 python manage.py runserver
 
@@ -54,26 +40,24 @@ python manage.py runserver
 
 Получение токена
 
-Отправить POST-запрос на адрес `api/v1/jwt/create/` и передать 2 поля в `data`:
+Отправить POST-запрос на адрес api/v1/jwt/create/ и передать 2 поля в data:
 
-1. `username` - имя пользователя.
-2. `password` - пароль пользователя.
+1. username - имя пользователя.
+2. password - пароль пользователя.
 
 Создание поста
 
-Отправить POST-запрос на адрес `api/v1/posts/` и передать обязательное поле `text`, в заголовке указать `Authorization`:`Bearer <токен>`.
+Отправить POST-запрос на адрес api/v1/posts/ и передать обязательное поле text, в заголовке указать Authorization:Bearer <токен>.
 
 1. Пример запроса:
 
-   ```json
    {
      "text": "Первый пост."
    }
-   ```
+   
 
 2. Пример ответа:
 
-   ```json
    {
      "id": 5,
      "author": "Kot",
@@ -82,24 +66,22 @@ python manage.py runserver
      "image": null,
      "group": null
    }
-   ```
+   
 
 Комментирование поста пользователя
 
-Отправить POST-запрос на адрес `api/v1/posts/{post_id}/comments/` и передать обязательные поля `post` и `text`, в заголовке указать `Authorization`:`Bearer <токен>`.
+Отправить POST-запрос на адрес api/v1/posts/{post_id}/comments/ и передать обязательные поля post и text, в заголовке указать Authorization:Bearer <токен>.
 
 1. Пример запроса:
 
-   ```json
    {
      "post": 1,
      "text": "Тестик"
    }
-   ```
+   
 
 2. Пример ответа:
 
-   ```json
    {
      "id": 1,
      "author": "Koti",
